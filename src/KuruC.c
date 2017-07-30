@@ -16,6 +16,8 @@ void get_data();
 void check_array();
 void pri(int);
 void print_array(int[]);
+void file_write();
+void my_file_read();
 
 int main(void) {
 	int a = 0b1111;
@@ -23,9 +25,13 @@ int main(void) {
 	printf("aaaa");
 	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
 	//get_data();
-	check_array();
+	//check_array();
+	//file_write();
+	my_file_read();
+
 	return EXIT_SUCCESS;
 }
+
 void get_data() {
 	double data;
 	printf("input data:");
@@ -63,3 +69,20 @@ void print_array(int ar[]) {
 void pri(int i) {
 	printf("%d\n", i);
 }
+
+void file_write() {
+	FILE *file;
+	file = fopen("test.txt", "w");
+	fprintf(file, "Hello Test Text\n");
+	fclose(file);
+}
+
+void my_file_read() {
+	char a[128];
+	FILE *file;
+	file = fopen("test.txt", "r");
+	fscanf(file, "%s", &a);
+	printf("%s", a);
+}
+
+
