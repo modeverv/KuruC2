@@ -37,6 +37,10 @@ void check_enum();
 void check_malloc();
 void check_realloc();
 void check_time();
+// 関数ポインタ
+void wa(int, int);
+void sa(int, int);
+void check_func_pointer();
 
 int main(void) {
 	//int a = 0b1111;
@@ -52,7 +56,8 @@ int main(void) {
 	//check_malloc();
 	//check_realloc();
 	//printf("%d\n", sum(1, 10));
-	check_time();
+	//check_time();
+	check_func_pointer();
 	return EXIT_SUCCESS;
 }
 
@@ -168,4 +173,22 @@ void check_time() {
 	end = clock();
 	printf("%d\n", end);
 	printf("%d[ms]\n", end - start);
+}
+
+void check_func_pointer() {
+	void (*keisan[2])(int, int);
+	keisan[0] = wa;
+	keisan[1] = sa;
+	int i;
+	for (i = 0; i < 2; i++) {
+		keisan[i](100, 20);
+	}
+}
+
+void wa(int a, int b) {
+printf("%d\n", a + b);
+}
+
+void sa(int a, int b) {
+printf("%d\n", a - b);
 }
