@@ -12,8 +12,11 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <stdbool.h>
+#include <time.h>
+
 // ソース分割
 #include "mylib/sum.h"
+
 
 #define TAX 0.08
 #define EXCISETAX 0.08
@@ -33,6 +36,7 @@ void check_define();
 void check_enum();
 void check_malloc();
 void check_realloc();
+void check_time();
 
 int main(void) {
 	//int a = 0b1111;
@@ -47,7 +51,8 @@ int main(void) {
 	//check_enum();
 	//check_malloc();
 	//check_realloc();
-	printf("%d\n", sum(1, 10));
+	//printf("%d\n", sum(1, 10));
+	check_time();
 	return EXIT_SUCCESS;
 }
 
@@ -150,4 +155,17 @@ void check_realloc() {
 	}
 	printf("%d\n", heap[19]);
 	free(heap);
+}
+
+void check_time() {
+	clock_t start, end;
+	int i;
+	start = clock();
+	printf("%d\n", start);
+	for (i = 0; i < 10; i++) {
+		printf("%s\n", "a");
+	}
+	end = clock();
+	printf("%d\n", end);
+	printf("%d[ms]\n", end - start);
 }
