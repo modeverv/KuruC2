@@ -31,6 +31,7 @@ void my_file_read();
 void check_define();
 void check_enum();
 void check_malloc();
+void check_realloc();
 
 int main(void) {
 	//int a = 0b1111;
@@ -43,7 +44,8 @@ int main(void) {
 	//my_file_read();
 	//check_define();
 	//check_enum();
-	check_malloc();
+	//check_malloc();
+	check_realloc();
 	return EXIT_SUCCESS;
 }
 
@@ -127,5 +129,23 @@ void check_malloc() {
 		heap[i] = i;
 	}
 	printf("%d\n", heap[5]);
+	free(heap);
+}
+
+void check_realloc() {
+	int i;
+	int *heap;
+	heap = (int*) malloc(sizeof(int) * 10);
+	if (heap == NULL) {
+		exit(1);
+	}
+	heap = (int*) realloc(heap, sizeof(int) * 10);
+	if (heap == NULL) {
+		exit(1);
+	}
+	for (i = 0; i < 20; i++) {
+		heap[i] = i;
+	}
+	printf("%d\n", heap[19]);
 	free(heap);
 }
