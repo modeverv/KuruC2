@@ -12,7 +12,8 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <stdbool.h>
-
+// ソース分割
+#include "mylib/sum.h"
 
 #define TAX 0.08
 #define EXCISETAX 0.08
@@ -45,7 +46,8 @@ int main(void) {
 	//check_define();
 	//check_enum();
 	//check_malloc();
-	check_realloc();
+	//check_realloc();
+	printf("%d\n", sum(1, 10));
 	return EXIT_SUCCESS;
 }
 

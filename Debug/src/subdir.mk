@@ -4,13 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../src/KuruC.c 
+../src/KuruC.c \
+../src/sum.c 
 
 OBJS += \
-./src/KuruC.o 
+./src/KuruC.o \
+./src/sum.o 
 
 C_DEPS += \
-./src/KuruC.d 
+./src/KuruC.d \
+./src/sum.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
