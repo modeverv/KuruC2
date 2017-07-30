@@ -30,6 +30,7 @@ void file_write();
 void my_file_read();
 void check_define();
 void check_enum();
+void check_malloc();
 
 int main(void) {
 	//int a = 0b1111;
@@ -40,8 +41,9 @@ int main(void) {
 	//check_array();
 	//file_write();
 	//my_file_read();
-	check_define();
-	check_enum();
+	//check_define();
+	//check_enum();
+	check_malloc();
 	return EXIT_SUCCESS;
 }
 
@@ -111,4 +113,19 @@ void check_define() {
 void check_enum() {
 	Type e = ONE;
 	printf("%d\n", e);
+}
+
+void check_malloc() {
+	int i;
+	int *heap;
+	// mallocが返すのはvoidポインタなのでキャストする
+	heap = (int*) malloc(sizeof(int) * 10);
+	if (heap == NULL) {
+		exit(1);
+	}
+	for (i = 0; i < 10; i++) {
+		heap[i] = i;
+	}
+	printf("%d\n", heap[5]);
+	free(heap);
 }
